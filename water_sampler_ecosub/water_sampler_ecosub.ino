@@ -9,7 +9,7 @@
 
 // Sampler Design
 #define SAMPLES 6
-#define GEARBOX_RATIO 2
+#define ROTATION_DISTANCE 32.5
 #define BAUD_RATE 9600
 
 // Global constants
@@ -20,8 +20,6 @@ const int SERVO_PIN = 9;
 const int COMM_PIN_1 = A4;
 const int COMM_PIN_2 = A5;
 const int I2C_ADDRESS = 0x09;
-
-const float ROTATION_DISTANCE = (360.0 / (SAMPLES * GEARBOX_RATIO - 1));
 
 // Global variables
 // Do not edit these
@@ -34,6 +32,7 @@ Servo samplerServo;
 void setup (){
   // Servo Setup
   samplerServo.attach(SERVO_PIN);
+  samplerServo.write(servoPosition);
 
   if (COMM_PROTO == "rs232" || COMM_PROTO == "terminal"){
     // Open serial communications and wait for port to open:
