@@ -14,6 +14,8 @@
 
 // Global constants
 // Do not edit these
+const String VERSION = "v2.1";
+
 const int SERVO_PIN = 9;
 const int COMM_PIN_1 = A4;
 const int COMM_PIN_2 = A5;
@@ -24,6 +26,8 @@ const float ROTATION_DISTANCE = (360.0 / (SAMPLES * GEARBOX_RATIO - 1));
 // Global variables
 // Do not edit these
 int collectedSamples = 0;
+
+float servoPosition = 0;
 
 Servo samplerServo;
 
@@ -38,7 +42,8 @@ void setup (){
       ; // wait for serial port to connect. Needed for Native USB only
     }
     if (COMM_PROTO == "terminal"){
-      Serial.println("Water Sampler, Software Version v3.0");
+      Serial.print("Water Sampler, Software Version ");
+      Serial.println(VERSION);
       Serial.println("Options:");
       Serial.println("\t$sample - Takes Sample");
       Serial.println("\t$reset  - Reset Sampler");
@@ -64,15 +69,18 @@ void loop (){
     recievedCommand.trim();                        // remove any \r \n whitespace at the end of the String
     if (recievedCommand == "$sample") {
       collectSample();
-      Serial.println("$ok");
+      Serial.println("$ok"); // Currently sends okay regardless of if sample is collected or not
       if (COMM_PROTO == "terminal"){
         Serial.print("Sample Collected: ");
         Serial.print(collectedSamples);
         Serial.print("/");
         Serial.println(SAMPLES);
       }
-    } else {
-      samplerServo.write(0);
+    } 
+    if (recievedCommand == "$reset") {
+      // Reset all values and put servo to zero position
+      servoPosition = 0.0;
+      samplerServo.write(servoPosition);
       collectedSamples = 0;
       Serial.println("$ok");
       if (COMM_PROTO == "terminal"){
@@ -87,6 +95,11 @@ void loop (){
 }
 
 void collectSample(){
+  if (collectedSamples < SAMPLES){
+    servoPosition += ROTATION_DISTANCE; // Add rotation distance to ammount servo moved
+    samplerServo.write(servoPosition); // Move Servo
+    collectedSamples++; // Increase Count
+  }
   if (COMM_PROTO == "i2c"){
     Wire.write("$ok");
   }
