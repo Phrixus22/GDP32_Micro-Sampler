@@ -18,9 +18,9 @@ Sampler is designed for VCC 5v.
     - `GND A4 A5 GND VCC`
 
 ## PCB Diagram
-![PCB Wiring Diagram](/images/PCB_design.PNG)
-
-![PCB Schematic](/images/Schematic.PNG)
+| PCB Wiring Diagram | PCB Schematic |
+|--------------------|---------------|
+|![PCB Wiring Diagram](/images/PCB_design.PNG)|![PCB Schematic](/images/Schematic.PNG)|
 
 ## Communication Protocols (COMM_PROTO)
 ### Terminal
