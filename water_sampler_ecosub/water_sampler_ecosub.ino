@@ -72,7 +72,7 @@ void setup (){
     pinMode(COMM_PIN_2, OUTPUT);
     
     // Set the baud rate for the SoftwareSerial object
-    samplerSerial.begin(9600);
+    samplerSerial.begin(BAUD_RATE);
   }
 
   if (COMM_PROTO == "i2c"){
