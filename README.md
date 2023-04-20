@@ -2,15 +2,15 @@
 The micro sampler is designed with variable samples in mind so the software
 is designed the same. There are a few configurable options in the software.
 - **COMM_PROTO** (terminal, rs232, i2c, pwm)
-    Communication protocol to be used rs232 is most common for Autonomous
+    - Communication protocol to be used rs232 is most common for Autonomous
     Underwater Vehicles (AUV's) and is the most secure to deployment vehicles.
 - **SAMPLES** (default: 6)
-    Sample number depends on design limits the number of samples collected.
+    - Sample number depends on design limits the number of samples collected.
 - **ROTATION_DISTANCE** (default: 32.5)
-    Must be calculated via practical tests or CAD it determines how much the
+    - Must be calculated via practical tests or CAD it determines how much the
     cam moves each activation.
 - **BAUD_RATE** (default: 9600)
-    Baud rate the sampler communicates at over serial.
+    - Baud rate the sampler communicates at over serial.
 
 ## PCB Diagram
 ![PCB Wiring Diagram](/images/PCB_design.PNG)
