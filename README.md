@@ -49,7 +49,7 @@ Expecting a request of 3 bytes and will return `$ok` no other commands are avali
     - `GND SDA SCL GND VCC`
 
 ### PWM
-- Still to be implemented.
+- **Still to be implemented.**
 - Current plan is 4 PWM pulses of 200ms with 100ms gap.
 - Current Pinout:
     -  `GND PWM GND GND VCC`
