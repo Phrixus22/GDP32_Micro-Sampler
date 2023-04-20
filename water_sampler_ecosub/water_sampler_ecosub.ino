@@ -101,9 +101,7 @@ void loop (){
     } 
     if (recievedCommand == "$reset") {
       // Reset all values and put servo to zero position
-      servoPosition = 0.0;
-      samplerServo.write(servoPosition);
-      collectedSamples = 0;
+      resetSampler();
       Serial.println("$ok");
       Serial.println("Sampler Reset");
     }
@@ -143,6 +141,7 @@ void collectSample(){
     Wire.write("$ok");
   }
   if (collectedSamples == 6){
+    delay(1000);
     resetSampler();
   }
 }
