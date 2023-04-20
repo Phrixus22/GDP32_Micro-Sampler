@@ -15,7 +15,7 @@ is designed the same. There are a few configurable options in the software.
 The pinout on the schematic is labelled unhelpfully in the current version.
 Sampler is designed for VCC 5v.
 - Interface Pinout for Arduino:
-    - GND A4 A5 GND VCC
+    - `GND A4 A5 GND VCC`
 
 ## PCB Diagram
 ![PCB Wiring Diagram](/images/PCB_design.PNG)
@@ -40,16 +40,22 @@ Only avaliable through the Atmega328p, TX, RK pins which are wired to the progra
     - `$state`
         - Responds `$ok` if the sampler is alive, used for checking pinout.
 - Current Pinout:
-    - GND RK  TX  GND VCC
+    - `GND RK  TX  GND VCC`
 
 ### I2C
 - The sampler listens to address 9, this is customisable but be aware of conflicts with other I2C devices.
 Expecting a request of 3 bytes and will return `$ok` no other commands are avaliable.
 - Current Pinout:
-    - GND SDA SCL GND VCC
+    - `GND SDA SCL GND VCC`
 
 ### PWM
 - Still to be implemented.
 - Current plan is 4 PWM pulses of 200ms with 100ms gap.
 - Current Pinout:
-    -  GND PWM GND GND VCC
+    -  `GND PWM GND GND VCC`
+
+## Known Issues
+- Interface port labelling is for I2C only and not all other communication protocols.
+    - Current Resolution: List pinouts from left to right for each communication protocol.
+- Servo port labelling is inverted.
+    - Current Resolution: Pinout should be `SIG VCC GND` NOT `GND VCC SIG` as marked
